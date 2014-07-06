@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   resources :songs
-  get '/' => 'songs#index'
+  root to: "songs#index"
   get '/songs' => 'songs#index'
   get '/songs/new' => 'songs#new'
   post '/songs/' => 'songs#create'
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   get '/songs/:id/edit' => 'songs#edit'
   patch '/songs/:id' => 'songs#update'
   delete '/songs/:id' => 'songs#destroy' 
+
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

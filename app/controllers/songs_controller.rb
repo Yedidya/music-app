@@ -1,17 +1,30 @@
 class SongsController < ApplicationController
 
   def index
-    @songs = Song.all
-    @title = MusicApp
+    if current_user 
+      @songs = current_user.songs.all
+    elsif current_user.nil?
+      @songs = Song.all
+    end
+    @title = "MusicApp"
   end
 
   def new
     @song = Song.new
-    @title = New Track
+    @title = "New Track"
   end  
 
   def create
+    tags = params[:song][:tag_list].split(", ")
     @song = Song.create(params[:song])
+    tags.each do |tag| 
+      if Tag.find_by(:name => tag)
+          @song.tags << tag
+      else 
+        @song.tags.create(:name => tag)
+      end
+    @song.user_id << params[:user_id]
+    end
     flash[:success] = "You have successfully created a new track!"
     redirect_to @song
   end
@@ -36,6 +49,8 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
+    flash[:success] = "You have successfully deleted your track."
+    redirect_to "/songs/"
   end
 end
 
