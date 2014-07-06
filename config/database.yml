@@ -32,5 +32,3 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-
-  socket: /tmp/mysql.sock
