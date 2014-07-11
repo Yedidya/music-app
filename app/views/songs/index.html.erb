@@ -1,4 +1,8 @@
-<h1>This is the song index</h1>
+<% if current_user.nil? %>
+<h1>Track Projects</h1>
+<% else %>
+<h1>Your Track Projects</h1>
+<% end %>
 
 <div class="index" id="user_repositories">
   <% @songs.each do |song| %>

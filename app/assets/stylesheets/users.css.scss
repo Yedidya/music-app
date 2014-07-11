@@ -1,0 +1,33 @@
+#sign_up {
+  background-image: image-url("bedge_grunge.png");
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.col-md-3 {
+  text-align: center;
+}
+
+#sign_in_form {
+  text-align: center;
+}
+
+.panel-body {
+  background-image: image-url("bedge_grunge.png");
+  text-align: center;
+}
+
+#sign_in_section {
+  width: 300px;
+  margin: auto;
+}
+
+.accessibility-aid {
+height: 1px;
+width: 1px;
+clip: rect(1px, 1px, 1px, 1px);
+overflow: hidden;
+position: absolute;
+margin: 0;
+}
+

@@ -8,8 +8,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :tag_list, "Tags, each separated by a comma (,)" %><br>
+    <%= f.label :tag_list, "Tags" %><br>
     <%= f.text_field :tag_list %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label :song_url, "Upload Song" %><br>
+    <%= f.file_field :song_url %>
   </div><br>
   
 

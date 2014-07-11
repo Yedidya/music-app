@@ -16,14 +16,13 @@ class SongsController < ApplicationController
 
   def create
     tags = params[:song][:tag_list].split(", ")
-    @song = Song.create(params[:song])
+    @song = current_user.songs.create(params[:song])
     tags.each do |tag| 
       if Tag.find_by(:name => tag)
           @song.tags << tag
       else 
         @song.tags.create(:name => tag)
       end
-    @song.user_id << params[:user_id]
     end
     flash[:success] = "You have successfully created a new track!"
     redirect_to @song
