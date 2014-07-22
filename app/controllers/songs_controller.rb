@@ -16,9 +16,9 @@ class SongsController < ApplicationController
 
   def create
     tags = params[:song][:tag_list].split(", ")
-    @song = current_user.songs.create(params[:song])
+    @song = current_user.songs.create(song_params)
     tags.each do |tag| 
-      if Tag.find_by(:name => tag)
+      if tag = Tag.find_by(:name => tag)
           @song.tags << tag
       else 
         @song.tags.create(:name => tag)
@@ -50,6 +50,11 @@ class SongsController < ApplicationController
     @song.destroy
     flash[:success] = "You have successfully deleted your track."
     redirect_to "/songs/"
+  end
+
+  private
+  def song_params
+    return params.require(:song).permit(:title, :tag_list, :song_url)
   end
 end
 
