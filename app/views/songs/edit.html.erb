@@ -13,4 +13,5 @@
   <br>
 <% end %>
  
-<a data-confirm="Are you sure?" data-method="delete" href="<%= "/songs/#{@song.id}"%>" rel="nofollow" class="btn btn-default" role="button">Delete</a>
+<%= link_to "Delete", song_path(@song), :class => "btn btn-default", :method => :delete, :data => {:confirm => "Are you sure?"} %> 
+ 
