@@ -6,10 +6,10 @@
 
     <title><%= @title %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
   </head>
 
   <body>
@@ -109,9 +109,7 @@
           <%= message %>
         </div>
       <% end %>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-
+    </div>
+      <%= yield %>
   </body>
 </html>
