@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713210301) do
+ActiveRecord::Schema.define(version: 20140808221712) do
 
   create_table "songs", force: true do |t|
     t.string   "title"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20140713210301) do
 
   create_table "songs_tags", id: false, force: true do |t|
     t.integer "tag_id",  null: false
+    t.integer "song_id", null: false
+  end
+
+  create_table "songs_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
     t.integer "song_id", null: false
   end
 
@@ -50,5 +55,16 @@ ActiveRecord::Schema.define(version: 20140713210301) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "version_number"
+    t.integer  "song_id"
+    t.string   "song_url"
+    t.boolean  "master"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "message"
+  end
 
 end

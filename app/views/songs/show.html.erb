@@ -4,5 +4,35 @@
   Your browser does not support the audio tag.
 </audio><br>
 <% if current_user %>
-<a href="/songs/<%=@song.id%>/edit">Edit</a>
+  <a href="/songs/<%=@song.id%>/edit">Edit</a>
+<% end %>
+<% @versions.each do |version| %>
+  <p>Version #<%= version.version_number %></p>
+  <p><%= version.message %></p>
+  <audio controls>
+    <source src="<%= @song.song_url.url %>" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio><br>
+<% end %>
+
+<h1>New Version</h1>
+
+<%= form_for(@version) do |f| %>
+  <%= f.hidden_field :song_id, @song.id %>
+
+  <div class="field">
+    <%= f.label :message, "Version message:" %><br>
+    <%= f.text_field :message %>
+  </div>
+
+  <div class="field">
+    <%= f.label :song_url, "Upload Song" %><br>
+    <%= f.file_field :song_url %>
+  </div><br>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <br>
 <% end %>
