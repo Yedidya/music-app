@@ -1,12 +1,47 @@
-<% if current_user.nil? %>
-<h1>Track Projects</h1>
-<% else %>
-<h1>Your Track Projects</h1>
-<% end %>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#">Profile</a></li>
+  <li><a href="#">Tracks</a></li>
+  <li><a href="#">News</a></li>
+</ul>
+<div class="page-body">
+  <div class="row">
+    <div class ="col-md-3">
+      <div id="user_info">
+        <img src="http://www.piblaw.com/attorneys/partners/James_Berg/jim_berg.jpg" alt="berg">
+        <h1 id="username"><%= current_user.username %></h1><br>
 
-<div class="index" id="user_repositories">
-  <% @songs.each do |song| %>
-  <h4><a href="/songs/<%= song.id %>"><%= song.title %></a></h4>
-  <% end %>
-</div>
-
+      </div>  
+    </div>  
+    <div class="col-md-5" id="my-tracks">
+        <div id="personal_tracks">
+          <% if current_user.nil? %>
+            <h1>Track Projects</h1>
+          <% else %>
+            <h3>Your Track Projects</h3>
+          <% end %>
+            <div class="list-group">
+              <% @songs.each do |song| %>
+              <a href="/songs/<%= song.id %>" class="list-group-item">
+              <h4 class="list-group-item-heading"><%= song.title %></h4>
+              <p class="list-group-item-text">
+                <audio controls>
+                <source src="<%= song.song_url.url %>" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio><br>
+              </p>
+              </a>
+              <% end %>
+            </div>
+        </div>
+      </div> 
+      <div class ="col-md-4" id="my-contributes">
+        <h3>Tracks contributed to</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+          <h4 class="list-group-item-heading">Track 1</h4>
+          <p class="list-group-item-text">This will be the track tags and description</p>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>  

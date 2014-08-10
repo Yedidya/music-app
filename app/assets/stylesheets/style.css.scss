@@ -1,12 +1,11 @@
 body {
   font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  // margin-left: 60px;
+  // margin-right: 60px;
+  // margin-top: 40px;
 }
 
-.jumbotron {
-  background-image: url('bedge_grunge.png')
-}
-
-.panel-body {
+.jumbotron, .panel-body {
   background-image: url('bedge_grunge.png')
 }
 
@@ -14,4 +13,29 @@ body {
   width: 300px;
   margin: auto;
   text-align: center;
+}
+
+img {
+  border:1px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;  
+  height: 300px;
+  width: 225px;
+}
+
+#username {
+  font-weight: bold;
+}
+
+.navbar-header {
+  margin-right: 0px;
+  margin-right: 0px;
+}
+ul {
+  margin-left: 300px;
+}
+
+#new_button{
+  font-size: 200%;
 }
