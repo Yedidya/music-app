@@ -9,18 +9,14 @@ Rails.application.routes.draw do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end
   end
-  resources :songs
-  get '/songs' => 'songs#index'
-  get '/songs/new' => 'songs#new'
-  post '/songs/' => 'songs#create'
-  get '/songs/:id' => 'songs#show'
-  get '/songs/:id/edit' => 'songs#edit'
-  patch '/songs/:id' => 'songs#update'
-  delete '/songs/:id' => 'songs#destroy' 
-
+  
+  resources :songs 
+ 
   resources :users
 
   resources :versions
+
+  post '/users/search' => 'users#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

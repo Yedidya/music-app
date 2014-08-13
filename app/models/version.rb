@@ -1,4 +1,6 @@
 class Version < ActiveRecord::Base
-  belongs_to :songs
-  belongs_to :users
+  belongs_to :user
+  belongs_to :song
+
+  mount_uploader :song_url, SongUploader
 end

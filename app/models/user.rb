@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :songs
-  has_many :vesions
+  has_many :versions
+  has_many :team_members
+
 end

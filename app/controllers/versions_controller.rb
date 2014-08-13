@@ -1,19 +1,16 @@
 class VersionsController < ApplicationController
 
-  def index
-    @versions = Version.all
-  end
-
-  def new
-    @version = Version.new
-  end
-
   def create
-    
+    @new_version = current_user.versions.create(version_params)
+    #@song = current_user.songs.id
+    flash[:success] = "You have successfully created a new track!"
+    redirect_to @song
   end
 
-  def show
-    version = Version.find_by(params[:id])
+  private 
+
+  def version_params
+    return params.require(:version).permit(:song_url, :message)
   end
 
 end
