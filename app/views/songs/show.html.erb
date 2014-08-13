@@ -46,3 +46,13 @@
   </div><br>
   <%= submit_tag 'Find team member'%>
 <% end %>
+
+<%= form_tag('/team_members') do %>
+  <div class="field">
+    <%= hidden_field_tag :song_id, @song.id %>
+    <%= label_tag :username, "Type a username to add as a team member:"  %>
+  <br>
+    <%= text_field_tag :username %>
+  </div><br>
+  <%= submit_tag 'Add team member'%>
+<% end %>

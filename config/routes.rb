@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   resources :versions
 
+  resources :team_members
+  
   post '/users/search' => 'users#search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
