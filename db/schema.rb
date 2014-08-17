@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810211636) do
+ActiveRecord::Schema.define(version: 20140814144213) do
 
   create_table "songs", force: true do |t|
     t.string   "title"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140810211636) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "message"
+    t.string   "unmastered_file"
   end
 
 end

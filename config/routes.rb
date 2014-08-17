@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :versions
+  get 'versions/:id/download' => 'versions#download', :as => :version_download
 
   resources :team_members
-  
+
   post '/users/search' => 'users#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
