@@ -21,6 +21,12 @@ Rails.application.routes.draw do
 
   post '/users/search' => 'users#search'
 
+  namespace :api do
+    namespace :v1 do
+      get '/users' => 'users#index'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

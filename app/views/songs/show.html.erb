@@ -1,66 +1,62 @@
-<h1><%= @song.title %></h1>
-<audio controls>
-  <source src="<%= @song.song_url.url %>" type="audio/mpeg">
-  Your browser does not support the audio tag.
-</audio><br>
-<% if current_user %>
-  <a href="/songs/<%=@song.id%>/edit">Edit</a>
-<% end %>
+<div ng-app="app">
+  <div ng-controller="songsCtrl">
+    {{ 1+1 }}
+    <h1><%= @song.title %></h1>
+    <audio controls>
+      <source src="<%= @song.song_url.url %>" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio><br>
+    <% if current_user %>
+      <a href="/songs/<%=@song.id%>/edit">Edit</a>
+    <% end %>
 
-<% @versions.each do |version| %>
-  <p><strong>Version #<%= version.version_number %></strong></p>
-  <p><%= version.message %></p>
-  <audio controls>
-    <source src="<%= version.song_url.url %>" type="audio/mpeg">
-    Your browser does not support the audio tag.
-  </audio> 
-  <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
-<% end %>
-
-
-<h1>New Version</h1>
-
-<%= form_for(@version) do |f| %>
-  <%= f.hidden_field :song_id, value: @song.id %>
-  <%= f.hidden_field :version_number, value: @version.version_number %>
-  <div class="field">
-    <%= f.label :message, "Version message:" %><br>
-    <%= f.text_field :message %>
-  </div><br>
-
-  <div class="field">
-    <%= f.label :song_url, "Upload Song" %><br>
-    <%= f.file_field :song_url %>
-  </div><br>
-  <div class="field">
-    <%= f.label :unmastered_file, "Upload unmastered song" %><br>
-    <%= f.file_field :unmastered_file %>
-  </div><br>
-  
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <br>
-<% end %>
+    <% @versions.each do |version| %>
+      <p><strong>Version #<%= version.version_number %></strong></p>
+      <p><%= version.message %></p>
+      <audio controls>
+        <source src="<%= version.song_url.url %>" type="audio/mpeg">
+        Your browser does not support the audio tag.
+      </audio> 
+      <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
+    <% end %>
 
 
-<%= form_tag('/users/search.json') do%> 
-   <div class="field">
-    <%= label_tag :username, "Type a username to add as a team member:" %><br>
-    <%= text_field_tag :username %>
-  </div><br>
-  <%= submit_tag 'Find team member'%>
-<% end %>
+    <h1>New Version</h1>
 
-<%= form_tag('/team_members') do %>
-  <div class="field">
-    <datalist id="members" >
-      <option ng-repeat="department in departments" value="{{ department.name }}">
-    </datalist>
-    <%= hidden_field_tag :song_id, @song.id %>
-    <%= label_tag :username, "Type a username to add as a team member:"  %>
-  <br>
-  <input name="commit" type="submit" value="Add team member" />  </div><br>
-  <%= submit_tag 'Add team member'%>
-<% end %>
+    <%= form_for(@version) do |f| %>
+      <%= f.hidden_field :song_id, value: @song.id %>
+      <%= f.hidden_field :version_number, value: @version.version_number %>
+      <div class="field">
+        <%= f.label :message, "Version message:" %><br>
+        <%= f.text_field :message %>
+      </div><br>
+
+      <div class="field">
+        <%= f.label :song_url, "Upload Song" %><br>
+        <%= f.file_field :song_url %>
+      </div><br>
+      <div class="field">
+        <%= f.label :unmastered_file, "Upload unmastered song" %><br>
+        <%= f.file_field :unmastered_file %>
+      </div><br>
+      
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+      <br>
+    <% end %>
+
+    <%= form_tag('/team_members') do %>
+      <div class="field">
+        <datalist id="users" >
+          <option ng-repeat="user in users" value="{{ user.username }}">
+        </datalist>
+        <%= hidden_field_tag :song_id, @song.id %>
+        <%= label_tag :username, "Type a username to add as a team member:"  %>
+      <br>
+        <input id="username" name="username" type="text" list="users"/>      </div><br>
+      <%= submit_tag 'Add team member'%>
+    <% end %>
+  </div>  
+</div> 
