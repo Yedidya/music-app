@@ -7,7 +7,7 @@ class VersionsController < ApplicationController
     
     flash[:success] = "You have successfully created a new version!"
     redirect_to song_path(params[:version][:song_id])
-    @version = Version.find_by(:id => params[:id]
+    @version = Version.find_by(:id => params[:id])
   end
 
   def download
@@ -23,5 +23,4 @@ class VersionsController < ApplicationController
   def version_params
     return params.require(:version).permit(:song_id, :song_url, :message, :unmastered_file)
   end
-
 end

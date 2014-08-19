@@ -55,10 +55,12 @@
 
 <%= form_tag('/team_members') do %>
   <div class="field">
+    <datalist id="members" >
+      <option ng-repeat="department in departments" value="{{ department.name }}">
+    </datalist>
     <%= hidden_field_tag :song_id, @song.id %>
     <%= label_tag :username, "Type a username to add as a team member:"  %>
   <br>
-    <%= text_field_tag :username %>
-  </div><br>
+  <input name="commit" type="submit" value="Add team member" />  </div><br>
   <%= submit_tag 'Add team member'%>
 <% end %>
