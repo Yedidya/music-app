@@ -11,13 +11,13 @@
 
     <div class="subheader user-tabs-nav">
       <div class="col-md-5" id="my-tracks">
-          <div id="personal_tracks">
+          <div>
             <% if current_user.nil? %>
               <h1>Track Projects</h1>
             <% else %>
               <h3>Your Track Projects</h3>
             <% end %>
-              <div class="list-group">
+              <div class="list-group" id="personal_tracks">
                 <% @songs.each do |song| %>
                 <a href="/songs/<%= song.id %>" class="list-group-item">
                 <h4 class="list-group-item-heading"><%= song.title %></h4>
