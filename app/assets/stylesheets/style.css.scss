@@ -1,8 +1,7 @@
 body {
   font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-  // margin-left: 60px;
-  // margin-right: 60px;
-  // margin-top: 40px;
+  background-image: url(brickwall.png);
+  margin-bottom: 40px;
 }
 
 .jumbotron, .panel-body {
@@ -22,6 +21,7 @@ img {
   border-radius: 20px;  
   height: 300px;
   width: 225px;
+  margin-top: 57px;
 }
 
 #username {
@@ -41,7 +41,7 @@ ul {
 }
 
 #personal_tracks, #contributed_tracks{
-  border-radius: 25px;
+  border-radius: 10px;
   height: 321px;
   overflow: scroll;
   border-width: 1px;
@@ -66,6 +66,6 @@ ul {
   text-align: center;
 }
 
-span#version-message {
-  margin-left: 50px;
+p#version-message {
+  font-style: italic;
 }
