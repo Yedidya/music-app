@@ -40,10 +40,22 @@ ul {
   font-size: 200%;
 }
 
-#personal_tracks{
+#personal_tracks, #contributed_tracks{
+  border-radius: 25px;
   height: 321px;
   overflow: scroll;
   border-width: 1px;
-  border-color: orange;
+  border-color: gray;
+  border-style: solid;
+}
+
+#version_page {
+  box-shadow: 10px 10px 5px #888888;
+  border-radius: 25px;
+  height: 400px;
+  width: 700px;
+  overflow: scroll;
+  border-width: 1px;
+  border-color: gray;
   border-style: solid;
 }
