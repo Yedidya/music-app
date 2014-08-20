@@ -50,12 +50,22 @@ ul {
 }
 
 #version_page {
-  box-shadow: 10px 10px 5px #888888;
-  border-radius: 25px;
-  height: 400px;
+  background-color: #F0F2EB;
+  border-radius: 10px;
+  height: 330px;
   width: 700px;
   overflow: scroll;
   border-width: 1px;
   border-color: gray;
   border-style: solid;
+}
+
+.centered {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+span#version-message {
+  margin-left: 50px;
 }

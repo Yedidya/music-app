@@ -1,14 +1,17 @@
 <div ng-app="app">
   <div ng-controller="songsCtrl">
-    <div class="row">
-      <div class="col-md-4">
-        <h1><%= @song.title %></h1>
+    <div class="centered">
+    <h1><%= @song.title %></h1>
           <audio controls>
             <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
-          </audio><br>
+          </audio>
           <% if current_user %>
-            <a href="/songs/<%=@song.id%>/edit">Edit</a>
+            <a href="/songs/<%=@song.id%>/edit">Edit details</a>
           <% end %>
+    </div>      
+    <div class="row">
+      <div class="col-md-4">
+        
           <h1>New Version</h1>
 
             <%= form_for(@version) do |f| %>
@@ -53,17 +56,18 @@
     
     <div class="col-md-8">
       <div id="version_page">
-        <% @versions.each do |version| %>
+        <% @versions.each_with_index do |version, index| %>
         <div class="panel-group" id="accordion">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                Version #<%= version.version_number %>
-                </a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>"><strong>  
+                Version #<%= version.version_number %> 
+                </strong></a>
+              <p><%= version.message %></p> 
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapse<%= index.to_s %>" class="panel-collapse collapse">
               <div class="panel-body">
                 <p><%= version.message %></p>
                   <audio controls>
@@ -74,7 +78,7 @@
               </div>
             </div>
           </div>
-            <% end %>
+            <% end %><br>
         </div>
       </div>
     </div>    

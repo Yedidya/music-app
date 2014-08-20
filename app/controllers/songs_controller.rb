@@ -32,6 +32,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    #@contibuting_user = Version.find_by(:id => params[:version][:user_id])
     @versions = @song.versions
     @title = @song.title
     @version = Version.new
