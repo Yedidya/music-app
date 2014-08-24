@@ -6,10 +6,13 @@
         <img src="http://www.piblaw.com/attorneys/partners/James_Berg/jim_berg.jpg" alt="berg">
         <span>
           <h1 id="username"><%= current_user.username %></h1>
+            <% if current_user.nil? %>
+            <% else current_user %>
           <form action="<%=edit_user_registration_path%>">
-          <input type="submit" class="btn btn-primary btn-xs" value="Edit your profile">
-       </form>
+            <input type="submit" class="btn btn-primary btn-xs" value="Edit your profile">
+          </form>
         </span><br>
+            <% end %>
       </div>  
     </div>  
 

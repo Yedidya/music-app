@@ -1,7 +1,7 @@
 <% if @songs.any? %>
   <% @songs.each do |song| %>
     <h4><a href="/songs/<%=song.id%>"><%=song.title%><a></h4>
-    <p><%=song.user.username%></p>
+    <p><a href="/users/<%= song.user_id%>"><%=song.user.username%></a></p>
   <% end %>
   <% else %>
     <h4>There are no results found for your search</h4>

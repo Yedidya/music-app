@@ -3,37 +3,31 @@
 
     
     <ul class="nav nav-sidebar" id="team-members">
-      <h3>Team members</h3>
+      <h3>Song members</h3>
       <li ng-repeat="teamMember in teamMembers">
-        <a>{{ teamMember.username }}</a>
+        <a href="/users/<%= @song.user_id %>">{{ teamMember.username }}</a>
       </li>
-      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Add song member </button>
+      <%if @members.include?(current_user) %>
+        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Add song member </button>
+      <% end %>
     </ul>
 
-    <div class="row">
+    <div id="current-song">
+      <div>
+        <h1 class="song-title"><%= @song.title %></h1>
+        <%if @members.include?(current_user) %>
+          <a href="/songs/<%=@song.id%>/edit">   Edit details</a>         
+        <% end %>
+      </div><br>
 
-      <div class="col-md-2"> 
-      </div>
+        <audio controls>
+          <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
+        </audio>
 
-      <div class="col-md-4">
-        <div class="centered">
-          <h1><%= @song.title %></h1>
-            <audio controls>
-              <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
-            </audio>
-            <% if current_user %>
-              <span><a href="/songs/<%=@song.id%>/edit">Edit details</a>
-            <% end %>
-        </div>
-      </div>  
-
-      <div class="col-md-4" id="contribute-button">
-        <div class="centered">
-          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
-        </div>
-      </div>
-
-    </div>   
+      <%if @members.include?(current_user) %>
+        <button id="new-version-btn"class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
+      <% end %>
+    </div><br>
 
     <div id="version_page">
       <% @versions.each_with_index do |version, index| %>
@@ -41,10 +35,17 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>"><strong>  
-              Version #<%= version.version_number %> 
-              </strong></a>
-            <p id="version-message"><%= version.message %></p> 
+              <span>
+                <div>
+                  <a class="version-user" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>">
+                    <strong>  
+                      Version #<%= version.version_number %> 
+                    </strong>
+                  </a>
+                  <p><%= version.user.username %></p>
+                </div> 
+              </span>
+              <p id="version-message"><%= version.message %></p>
             </h4>
           </div>
           <div id="collapse<%= index.to_s %>" class="panel-collapse collapse">
@@ -61,7 +62,7 @@
           <% end %><br>
       </div>
     </div>
-
+    
 
     <!-- Modal stuff -->
 
@@ -112,30 +113,24 @@
               <%= f.hidden_field :version_number, value: @version.version_number %>
 
             <div class="field">
-              <%= f.label :message, "Version message:" %><br>
+              <%= f.label :message, "Describe the changes you've made to the track:" %><br>
               <%= f.text_field :message %>
             </div><br>
 
             <div class="field">
-              <%= f.label :song_url, "Upload Song" %><br>
+              <%= f.label :song_url, "Upload the mastered song" %><br>
               <%= f.file_field :song_url %>
             </div><br>
 
             <div class="field">
-              <%= f.label :unmastered_file, "Upload unmastered song" %><br>
+              <%= f.label :unmastered_file, "Upload the unmastered song" %><br>
               <%= f.file_field :unmastered_file %>
             </div><br>
-          
-            <div class="actions">
-             <%= f.submit %>
-            </div>
-            <br>
               
-            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Add a song member">        
+            <input type="submit" class="btn btn-primary actions" value="Commit your contribution">        
             <% end %> 
           </div>
         </div>

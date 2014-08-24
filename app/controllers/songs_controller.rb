@@ -18,7 +18,7 @@ class SongsController < ApplicationController
   def create
     tags = params[:song][:tag_list].split(", ")
     @song = current_user.songs.create(song_params)
-    @version = current_user.versions.create(:song_id => @song.id, :song_url => song_params[:song_url], :version_number => 1, :master => true, :message => "First version")
+    @version = current_user.versions.create(:song_id => @song.id, :song_url => song_params[:song_url], :version_number => 1, :master => true, :message => "First version", :unmastered_file => params[:song][:unmastered_file])
     tags.each do |tag| 
       if tag = Tag.find_by(:name => tag)
           @song.tags << tag
@@ -33,7 +33,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
-    @members = @song.team_members.to_json
+    @members = @song.users
     @versions = @song.versions
     @title = @song.title
     @version = Version.new

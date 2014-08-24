@@ -51,6 +51,7 @@ ul {
 }
 
 #version_page {
+  margin-left: 222px;
   background-image: url(brickwall.png);
   background-color: #F0F2EB;
   border-radius: 6px;
@@ -65,7 +66,7 @@ ul {
 .centered {
   width: 300px;
   margin: auto;
-  text-align: center;
+  // text-align: center;
 }
 
 p {
@@ -88,4 +89,17 @@ p#version-message {
 ul#team-members {
   margin: 0;
   float: left;
+}
+
+#current-song {
+  margin-left: 225px;
+}
+
+#new-version-btn {
+  margin-left: 235px;
+  margin-bottom: 15px;
+}
+
+.song-title, .version-user {
+  display: inline;
 }
