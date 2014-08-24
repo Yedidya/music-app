@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def team_members
-    @members = TeamMember.where(:song_id => params[:song_id])
+    @members = Song.find_by(:id => params[:song_id]).users
     render json: @members
   end
 

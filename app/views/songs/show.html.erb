@@ -1,90 +1,149 @@
 <div ng-app="app">
-  <div ng-controller="songsCtrl">
-    <div class="centered">
-    <h1><%= @song.title %></h1>
-          <audio controls>
-            <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
-          </audio>
-          <% if current_user %>
-            <a href="/songs/<%=@song.id%>/edit">Edit details</a>
-          <% end %>
-    </div>      
+  <div ng-controller="songsCtrl" ng-init="init(<%= @song.id %>)">
+
+    
+    <ul class="nav nav-sidebar" id="team-members">
+      <h3>Team members</h3>
+      <li ng-repeat="teamMember in teamMembers">
+        <a>{{ teamMember.username }}</a>
+      </li>
+      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Add song member </button>
+    </ul>
+
     <div class="row">
+
+      <div class="col-md-2"> 
+      </div>
+
       <div class="col-md-4">
-        <div>
-          <h3>Team members</h3>
-          <p>This Man</p>
-          <p>That Man</p>
-        </div>
-          <h1>New Version</h1>
-
-            <%= form_for(@version) do |f| %>
-            <%= f.hidden_field :song_id, value: @song.id %>
-            <%= f.hidden_field :version_number, value: @version.version_number %>
-          <div class="field">
-            <%= f.label :message, "Version message:" %><br>
-            <%= f.text_field :message %>
-          </div><br>
-
-          <div class="field">
-            <%= f.label :song_url, "Upload Song" %><br>
-            <%= f.file_field :song_url %>
-          </div><br>
-
-          <div class="field">
-            <%= f.label :unmastered_file, "Upload unmastered song" %><br>
-            <%= f.file_field :unmastered_file %>
-          </div><br>
-        
-          <div class="actions">
-           <%= f.submit %>
-          </div>
-          <br>
+        <div class="centered">
+          <h1><%= @song.title %></h1>
+            <audio controls>
+              <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
+            </audio>
+            <% if current_user %>
+              <span><a href="/songs/<%=@song.id%>/edit">Edit details</a>
             <% end %>
+        </div>
+      </div>  
 
-            <%= form_tag('/team_members') do %>
-          <div class="field">
-            <datalist id="users" >
-              <option ng-repeat="user in users" value="{{ user.username }}">
-            </datalist>
-          <%= hidden_field_tag :song_id, @song.id %>
-          <%= label_tag :username, "Type a username to add as a team member:"  %>
-            <br>
-            <input id="username" name="username" type="text" list="users"/>
-          </div><br>
-        <%= submit_tag 'Add team member'%>
-        <% end %>
-      </div> 
-    
-    
-    
-    <div class="col-md-8">
-      <div id="version_page">
-        <% @versions.each_with_index do |version, index| %>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>"><strong>  
-                Version #<%= version.version_number %> 
-                </strong></a>
-              <p id="version-message"><%= version.message %></p> 
-              </h4>
-            </div>
-            <div id="collapse<%= index.to_s %>" class="panel-collapse collapse">
-              <div class="panel-body">
-                <p><%= version.message %></p>
-                  <audio controls>
-                    <source src="<%= version.song_url.url %>" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio> 
-                <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
-              </div>
-            </div>
-          </div>
-            <% end %><br>
+      <div class="col-md-4" id="contribute-button">
+        <div class="centered">
+          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
         </div>
       </div>
-    </div>    
+
+    </div>   
+
+    <div id="version_page">
+      <% @versions.each_with_index do |version, index| %>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>"><strong>  
+              Version #<%= version.version_number %> 
+              </strong></a>
+            <p id="version-message"><%= version.message %></p> 
+            </h4>
+          </div>
+          <div id="collapse<%= index.to_s %>" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p><%= version.message %></p>
+                <audio controls>
+                  <source src="<%= version.song_url.url %>" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio> 
+              <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
+            </div>
+          </div>
+        </div>
+          <% end %><br>
+      </div>
+    </div>
+
+
+    <!-- Modal stuff -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add a song member!</h4>
+          </div>
+          <div class="modal-body">
+            
+                <%= form_tag('/team_members') do %>
+              <div class="field">
+                <datalist id="users" >
+                  <option ng-repeat="user in users" value="{{ user.username }}">
+                </datalist>
+              <%= hidden_field_tag :song_id, @song.id %>
+              <%= label_tag :username, "A song member can contribute to this current track. Type a username to add as a song member:"  %>
+                <br>
+                <input id="username" name="username" type="text" list="users"/>
+              </div><br>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Add a song member">        
+            <% end %> 
+          </div>
+        </div>
+      </div>
+    </div><br>
+  
+  
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Upload your contibution!</h4>
+          </div>
+          <div class="modal-body">
+            
+              
+              <%= form_for(@version) do |f| %>
+              <%= f.hidden_field :song_id, value: @song.id %>
+              <%= f.hidden_field :version_number, value: @version.version_number %>
+
+            <div class="field">
+              <%= f.label :message, "Version message:" %><br>
+              <%= f.text_field :message %>
+            </div><br>
+
+            <div class="field">
+              <%= f.label :song_url, "Upload Song" %><br>
+              <%= f.file_field :song_url %>
+            </div><br>
+
+            <div class="field">
+              <%= f.label :unmastered_file, "Upload unmastered song" %><br>
+              <%= f.file_field :unmastered_file %>
+            </div><br>
+          
+            <div class="actions">
+             <%= f.submit %>
+            </div>
+            <br>
+              
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Add a song member">        
+            <% end %> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- End of Modal stuff -->
+
+
   </div>  
 </div> 

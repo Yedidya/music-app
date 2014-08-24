@@ -1,6 +1,6 @@
 <% if @songs.any? %>
   <% @songs.each do |song| %>
-    <h4><a href="#"><%=song.title%><a></h4>
+    <h4><a href="/songs/<%=song.id%>"><%=song.title%><a></h4>
     <p><%=song.user.username%></p>
   <% end %>
   <% else %>

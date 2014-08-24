@@ -5,6 +5,6 @@ class SearchesController < ApplicationController
     tag = Tag.find_by(:name => params[:q])
     @songs += tag.songs if tag
     @user = User.find_by(:username => params[:q])
-    @songs += @user.songs
+    #@songs += @user.songs
   end
 end

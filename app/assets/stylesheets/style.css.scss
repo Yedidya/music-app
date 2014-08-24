@@ -18,9 +18,9 @@ img {
   border:1px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
-  border-radius: 20px;  
-  height: 300px;
-  width: 225px;
+  border-radius: 6px;  
+  height: 230px;
+  width: 230px;
   margin-top: 57px;
 }
 
@@ -41,23 +41,25 @@ ul {
 }
 
 #personal_tracks, #contributed_tracks{
-  border-radius: 10px;
+  background-image: url(brickwall.png);
+  border-radius: 6px;
   height: 321px;
   overflow: scroll;
-  border-width: 1px;
-  border-color: gray;
-  border-style: solid;
+  // border-width: 1px;
+  // border-color: gray;
+  // border-style: solid;
 }
 
 #version_page {
+  background-image: url(brickwall.png);
   background-color: #F0F2EB;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 330px;
   width: 700px;
   overflow: scroll;
-  border-width: 1px;
-  border-color: gray;
-  border-style: solid;
+  // border-width: 1px;
+  // border-color: gray;
+  // border-style: solid;
 }
 
 .centered {
@@ -66,6 +68,24 @@ ul {
   text-align: center;
 }
 
+p {
+  font-size: 15px;
+}
+
 p#version-message {
+  font-size: 15px;
   font-style: italic;
+}
+
+.btn-xs {
+  font-size: 15px;
+}
+
+#contribute-button {
+  margin-top: 70px;
+}
+
+ul#team-members {
+  margin: 0;
+  float: left;
 }

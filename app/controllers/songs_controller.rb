@@ -26,13 +26,14 @@ class SongsController < ApplicationController
         @song.tags.create(:name => tag)
       end
     end
+    member = current_user.team_members.create(:user_id => current_user.id, :song_id => @song.id, :status => "member")
     flash[:success] = "You have successfully created a new track!"
     redirect_to @song
   end
 
   def show
     @song = Song.find(params[:id])
-    #@contibuting_user = Version.find_by(:id => params[:version][:user_id])
+    @members = @song.team_members.to_json
     @versions = @song.versions
     @title = @song.title
     @version = Version.new
