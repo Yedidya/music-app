@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :versions
   has_many :team_members
 
+  mount_uploader :photo, PhotoUploader
+
 end

@@ -14,10 +14,10 @@ body {
   text-align: center;
 }
 
-img {
+img.user-picture {
   border:1px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
   border-radius: 6px;  
   height: 230px;
   width: 230px;
@@ -102,4 +102,16 @@ ul#team-members {
 
 .song-title, .version-user {
   display: inline;
+}
+
+.version-username {
+  float: right;
+}
+
+.version-picture {
+  height: 40px;
+  width: 40px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; 
 }

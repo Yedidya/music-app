@@ -16,7 +16,7 @@
       <div>
         <h1 class="song-title"><%= @song.title %></h1>
         <%if @members.include?(current_user) %>
-          <a href="/songs/<%=@song.id%>/edit">   Edit details</a>         
+          <a href="/songs/<%=@song.id%>/edit">Edit details</a>         
         <% end %>
       </div><br>
 
@@ -42,7 +42,8 @@
                       Version #<%= version.version_number %> 
                     </strong>
                   </a>
-                  <p><%= version.user.username %></p>
+                  <span class="version-username"><%= version.user.username %>  &nbsp<%= image_tag version.user.photo.url, class: "version-picture" %>
+                  </span>
                 </div> 
               </span>
               <p id="version-message"><%= version.message %></p>

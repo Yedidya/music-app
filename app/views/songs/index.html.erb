@@ -3,9 +3,9 @@
   <div class="row">
     <div class ="col-md-3">
       <div id="user_info">
-        <img src="http://www.piblaw.com/attorneys/partners/James_Berg/jim_berg.jpg" alt="berg">
+        <%= image_tag current_user.photo.url %>
         <span>
-          <h1 id="username"><%= current_user.username %></h1>
+          <h1 id="username"><%= current_user.username, class: "user-picture" %></h1>
             <% if current_user.nil? %>
             <% else current_user %>
           <form action="<%=edit_user_registration_path%>">
