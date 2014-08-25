@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require angular
+//= require wavesurfer
 //= require_tree .
 
 

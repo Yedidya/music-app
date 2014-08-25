@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :songs
   has_many :versions
   has_many :team_members
+  has_many :comments
 
   mount_uploader :photo, PhotoUploader
 

@@ -12,10 +12,11 @@
       $http.get("/api/v1/team_members/" + $scope.songId + ".json").then(function (response) {
         $scope.teamMembers = response.data;
       });
-
-
     };
 
+    $scope.color = function(panel) {
+      console.log(panel);
+    }
     
   });
 })();
