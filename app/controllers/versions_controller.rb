@@ -13,7 +13,7 @@ class VersionsController < ApplicationController
   def show
     @version = Version.find_by(:id => params[:id])
     @new_comment = Comment.new
-    @comment = Comment.find_by(:id => params[:id])
+    @comments = @version.comments
   end
 
   def download

@@ -3,7 +3,9 @@
 </div>
 
 <div class="row">
-  <p><%=@comment.text%></p>
+  <% @comments.each do |comment| %>
+    <p><%= comment.user.username %>: <%= comment.text %></p>
+  <% end %>
 </div>
 
 <div class="row">
