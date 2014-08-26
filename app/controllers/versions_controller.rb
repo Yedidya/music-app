@@ -10,6 +10,12 @@ class VersionsController < ApplicationController
     @version = Version.find_by(:id => params[:id])
   end
 
+  def show
+    @version = Version.find_by(:id => params[:id])
+    @new_comment = Comment.new
+    @comment = Comment.find_by(:id => params[:id])
+  end
+
   def download
     @version = Version.find_by(:id => params[:id])
     @song = @version.song
@@ -17,6 +23,8 @@ class VersionsController < ApplicationController
     send_file("#{Rails.root}/public/" + @version.unmastered_file.url,
                filename: "#{@song.title}_V#{@version.version_number}.zip")
   end
+
+
 
   private 
 

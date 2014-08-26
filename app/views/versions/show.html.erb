@@ -1,1 +1,21 @@
-<h1><%= @versions %></h1>
+<div class="row">
+  <h1><%= @version.song.title %></h1>
+</div>
+
+<div class="row">
+  <p><%=@comment.text%></p>
+</div>
+
+<div class="row">
+  <%= form_for(@new_comment) do |f| %>
+  <%= f.hidden_field :version_id, value: @version.id %>
+  <%= f.hidden_field :user_id, value: @version.user_id %>
+
+
+  <div class="field">
+    <%= f.text_field :text %>
+  </div><br>
+
+  <input type="submit" class="btn btn-primary actions" value="Commit your contribution"></input>
+  <% end %>
+</div

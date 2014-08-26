@@ -20,22 +20,25 @@
         <%if @members.include?(current_user) %>
           <a href="/songs/<%=@song.id%>/edit">Edit details</a>         
         <% end %>
-      </div><br>
+      </div>
 
-        <audio controls>
+        <!-- <audio controls>
           <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
-        </audio>
+        </audio> -->
+
+        <%if @members.include?(current_user) %>
+        <button id="new-version-btn"class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
+      <% end %>
+    </div><br>
+
         <div id="player">
           <div id="wave"></div>
           <div class="centered">
             <a href="#" id="play-button" class="btn btn-primary"><span id="play-button-span" class="glyphicon glyphicon-play"></span></a>
           </div>
-        </div>
+        </div><br>
 
-      <%if @members.include?(current_user) %>
-        <button id="new-version-btn"class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
-      <% end %>
-    </div><br>
+      
 
     <div id="version_page">
       <% @versions.each_with_index do |version, index| %>
