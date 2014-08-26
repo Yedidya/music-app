@@ -16,7 +16,23 @@
 
     $scope.color = function(panel) {
       console.log(panel);
-    }
+    };
+
+    $scope.loadComments = function(versionId, currentUserId) {
+      $scope.currentVersionId = versionId;
+      $scope.currentUserId = currentUserId;
+      $http.get("/api/v1/versions/" + versionId + "/comments.json").then(function (response) {
+      $scope.comments = response.data;
+      console.log($scope.comments)
+      });
+    };
+
+    $scope.addComment = function(comment) {
+      $http.post("/api/v1/versions/" + $scope.currentVersionId + "/comments", {comment: comment, user_id: $scope.currentUserId }).then(function(response){
+        $scope.loadComments($scope.currentVersionId);
+        $scope.newComment = '';
+      });
+    };
     
   });
 })();

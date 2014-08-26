@@ -69,6 +69,7 @@
                       Your browser does not support the audio tag.
                     </audio> 
                   <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
+                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#comments-modal" ng-click="loadComments(<%= version.id %>, <%= current_user.id %>)">Comments</button>
                 </div>
               </div>
             </div>
@@ -150,6 +151,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Comments modal -->
+
+    <div class="modal fade" id="comments-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Comments</h4>
+          </div>
+          <div class="modal-body">
+            <div class="comments-list">
+              <ul>
+                <li ng-repeat="comment in comments">{{ comment.text }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <textarea class="new-comment" ng-model="newComment"></textarea>
+            <input type="submit" class="btn btn-primary" value="Add comment" ng-click="addComment(newComment)">        
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           
+          </div>
+        </div>
+      </div>
+    </div><br>
 
   <!-- End of Modal stuff -->
 

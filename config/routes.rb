@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/users' => 'users#index'
       get '/team_members/:song_id' => 'users#team_members'
+      get '/versions/:id/comments' => 'comments#index'
+      post '/versions/:id/comments' => 'comments#create'
     end
   end
 
