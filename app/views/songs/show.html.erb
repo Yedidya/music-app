@@ -68,6 +68,11 @@
                       <source src="<%= version.song_url.url %>" type="audio/mpeg">
                       Your browser does not support the audio tag.
                     </audio> 
+                  <% if version.master %>
+                    <span>MASTER!</span>
+                  <% else %>
+                    <%= link_to "Make Master", make_master_path(version.id), :class => "btn btn-default" %>
+                  <% end %>
                   <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
                   <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#comments-modal" ng-click="loadComments(<%= version.id %>, <%= current_user.id %>)">Comments</button>
                 </div>
@@ -211,6 +216,6 @@
       }
     });
 
-    wavesurfer.load("<%= @song.song_url.url %>");
+    wavesurfer.load("<%= @master_version.song_url.url %>");
   });
 </script>

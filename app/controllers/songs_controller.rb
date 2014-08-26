@@ -37,6 +37,7 @@ class SongsController < ApplicationController
     @versions = @song.versions
     @title = @song.title
     @version = Version.new
+    @master_version = @song.versions.find_by(:master => true)
   end
 
   def edit

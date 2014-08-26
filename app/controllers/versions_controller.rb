@@ -24,6 +24,14 @@ class VersionsController < ApplicationController
                filename: "#{@song.title}_V#{@version.version_number}.zip")
   end
 
+  def make_master
+    @version = Version.find_by(:id => params[:id])
+    @version.song.versions.each do |version|
+      version.update(:master => false)
+    end
+    @version.update(:master => true)
+    redirect_to song_path(@version.song.id)
+  end
 
 
   private 

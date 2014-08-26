@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :versions
-  resources :comments
   get 'versions/:id/download' => 'versions#download', :as => :version_download
+  get 'versions/:id/make_master' => 'versions#make_master', :as => :make_master
+  resources :comments
 
   resources :team_members
 
