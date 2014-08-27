@@ -5,7 +5,7 @@ body {
 }
 
 .jumbotron, .panel-body {
-  background-color: transparent;
+  background-color: #fff;
   opacity: 0.8; 
   filter: alpha(opacity=60);
 }
@@ -68,9 +68,9 @@ ul {
 }
 
 .centered {
-  width: 100px;
+  // width: 100px;
   margin: auto;
-  // text-align: center;
+  text-align: center;
 }
 
 p {
@@ -100,8 +100,8 @@ ul#team-members {
 }
 
 #new-version-btn {
-  margin-left: 235px;
-  margin-bottom: 15px;
+  margin-left: 24px;
+  margin-bottom: 4px;
 }
 
 .song-title, .version-user {
@@ -128,9 +128,7 @@ a.version-user:hover {
   text-decoration: none;
 }
 
-#player {
-  width: 700px;
-}
+
 
 .transparent {
 
@@ -145,10 +143,18 @@ h1, h3, h2, {
 //   border-radius: 6px; 
 // }
 
-#wave {
+#player {
+  width: 800px;
   margin: auto;
-  margin-left: 170px;
-  margin-right: 0px
+  position: relative;
+  bottom: 17px;
+}
 
+#wave {
+
+}
+
+#play-button {
+  width: 100px;
 }
 

@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  def display_photo
+    self.photo.file ? self.photo.url : "default-profile-pic.jpg"
+  end
+
 end

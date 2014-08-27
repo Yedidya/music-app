@@ -2,7 +2,7 @@
   <div class="row">
     <div class ="col-md-3">
       <div id="user_info">
-        <%= image_tag current_user.photo.url || "default-profile-pic.jpg", class: "user-picture" %>
+        <%= image_tag @user.display_photo, class: "user-picture" %>
         <span>
           <h1 id="username"><%= @user.username %></h1>
             <% if @user.nil? || @user != current_user %>

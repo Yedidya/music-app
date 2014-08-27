@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @contributed_versions = Version.where(:user_id => @user.id)
     @contributed_songs = []
     @contributed_versions.each do |version| 
-    @contributed_songs << version.song
+    @contributed_songs << version.song unless version.song.user_id == @user.id
     end
     @contributed_songs.uniq!
   end

@@ -19,23 +19,28 @@
       <div>
         <h1 class="song-title"><%= @song.title %> by <%= @song.user.username %></h1>
         <%if @members.include?(current_user) %>
-          <a href="/songs/<%=@song.id%>/edit">Edit details</a>         
+          <button id="new-version-btn"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
         <% end %>
+        <div>
+          <%if @members.include?(current_user) %>
+            <a href="/songs/<%=@song.id%>/edit" class="btn btn-default btn-sm">Edit details</a>         
+          <% end %>
+        </div>
       </div>
 
-        <%if @members.include?(current_user) %>
-        <button id="new-version-btn"class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
-      <% end %>
+        
+    </div>
+
+    <!-- Music Player -->
+
+    <div id="player">
+      <div id="wave"></div>
+      <div class="centered">
+        <a href="#" id="play-button" class="btn btn-primary"><span id="play-button-span" class="glyphicon glyphicon-play"></span></a>
+      </div>
     </div><br>
 
-        <div id="player">
-          <div id="wave"></div>
-          <div class="centered">
-            <a href="#" id="play-button" class="btn btn-primary"><span id="play-button-span" class="glyphicon glyphicon-play"></span></a>
-          </div>
-        </div><br>
-
-      
+    <!-- End of Music Player -->
 
     <div id="version_page">
       <% @versions.each_with_index do |version, index| %>
