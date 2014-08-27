@@ -2,6 +2,7 @@ body {
   font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   background: image-url('wild.jpg') no-repeat fixed center;
   margin-bottom: 40px;
+  color: lavender;
 }
 
 .jumbotron, .panel-body {
@@ -11,6 +12,12 @@ body {
 }
 
 #sign_in_section {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;  
+  background-color: #fff;
+  opacity: 0.8; 
+  filter: alpha(opacity=60);
   width: 300px;
   margin: auto;
   text-align: center;
@@ -156,5 +163,9 @@ h1, h3, h2, {
 
 #play-button {
   width: 100px;
+}
+
+#form-text {
+  color: lavender;
 }
 

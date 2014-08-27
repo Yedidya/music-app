@@ -23,7 +23,7 @@
         <% end %>
         <div>
           <%if @members.include?(current_user) %>
-            <a href="/songs/<%=@song.id%>/edit" class="btn btn-default btn-sm">Edit details</a>         
+            <a href="/songs/<%=@song.id%>/edit" class="btn btn-default btn-xs">Edit details</a>         
           <% end %>
         </div>
       </div>
@@ -55,7 +55,7 @@
                         <strong>  
                           Version #<%= version.version_number %> 
                         </strong>
-                        <span class="version-username"><%= version.user.username %>  &nbsp<%= image_tag version.user.photo.url, class: "version-picture" %>
+                        <span class="version-username"><%= version.user.username %>  &nbsp<%= image_tag version.user.display_photo, class: "version-picture" %>
                         </span>
                       </div> 
                     </span>
