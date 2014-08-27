@@ -34,10 +34,13 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
     @members = @song.users
+    puts @members
     @versions = @song.versions
     @title = @song.title
     @version = Version.new
     @master_version = @song.versions.find_by(:master => true)
+    @member =  @song.team_members 
+    puts @member
   end
 
   def edit
