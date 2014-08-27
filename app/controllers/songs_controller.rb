@@ -6,7 +6,7 @@ class SongsController < ApplicationController
     elsif current_user.nil?
       @songs = Song.all
     end
-    @title = "MusicApp"
+    @title = "Soundub"
   end
 
   def new

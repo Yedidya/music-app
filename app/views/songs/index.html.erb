@@ -3,7 +3,12 @@
   <div class="row">
     <div class ="col-md-3">
       <div id="user_info">
-        <%= image_tag current_user.photo.url, class: "user-picture" %>
+        <%if current_user.photo %>
+          <%= image_tag current_user.photo.url, class: "user-picture" %>
+        <% else %>
+          <img src="/app/assests/images/annonymous-profile.jpg">
+        <% end %>
+
         <span>
           <h1 id="username"><%= current_user.username %></h1>
             <% if current_user.nil? %>
@@ -39,13 +44,19 @@
               </div>
           </div>
         </div> 
-        <div class ="col-md-4" id="my-contributes">
+        <div class ="col-md-4 transparent" id="my-contributes">
           <h3>Tracks contributed to</h3>
           <div class="list-group" id="contributed_tracks">
-            <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Track 1</h4>
-            <p class="list-group-item-text">This will be the track tags and description</p>
-            </a>
+            <% if @contributed_songs.any?%>
+              <% @contributed_songs.each do |song| %>
+              <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading"><%= song.user.username %> - <%= song.title %></h4>
+              <p class="list-group-item-text"></p>
+              </a>
+              <% end %>
+            <% else %>
+              <h3>There are no contributed tracks</h3>
+            <% end %>
           </div>
         </div>
        </div> 

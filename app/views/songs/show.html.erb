@@ -5,7 +5,7 @@
     <ul class="nav nav-sidebar" id="team-members">
       <h3>Song members</h3>
       <li ng-repeat="teamMember in teamMembers">
-        <a href="/users/<%= @song.user_id %>">{{ teamMember.username }}</a>
+        <a href="/users/<%= @song.user.id %>">{{ teamMember.username }}</a>
       </li>
       <%if @members.include?(current_user) %>
         <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Add song member </button>
@@ -21,10 +21,6 @@
           <a href="/songs/<%=@song.id%>/edit">Edit details</a>         
         <% end %>
       </div>
-
-        <!-- <audio controls>
-          <source src="<%= @song.song_url.url %>" type="audio/mpeg">Your browser does not support the audio tag.
-        </audio> -->
 
         <%if @members.include?(current_user) %>
         <button id="new-version-btn"class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>

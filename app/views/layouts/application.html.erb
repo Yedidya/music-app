@@ -45,7 +45,7 @@
         </li>
             
         <li>
-          <a href="/songs" ><%= current_user.username %><span </span></a>
+          <a href="/users/<%= current_user.id %>" ><%= current_user.username %><span </span></a>
           <% if current_user %>
               <li class="divider"></li>
               <li><a data-method="delete" rel="nofollow" href="/users/sign_out">Sign Out</a></li>
