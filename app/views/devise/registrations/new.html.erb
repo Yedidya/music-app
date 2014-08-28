@@ -3,27 +3,27 @@
     <div class="row">
       <div class="col-md-9">
         <%= image_tag "logo.png" %>
-        <p>A collaborative platform for musicians to share music, contribute to tracks, and become a member of an up-beat and progressive musical alliance.</p>
+        <p id="dark-text">A collaborative platform for musicians to share music, contribute to tracks, and become a member of an up-beat and progressive musical alliance.</p>
         
       </div>
       <div class="col-md-3">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
-          <div><%= f.text_field :username, :placeholder => "Choose a username", :class => "form-inline", autofocus: true %>        
+          <div id="dark-text"><%= f.text_field :username, :placeholder => "Choose a username", :class => "form-inline", autofocus: true %>        
           </div><br>
 
-          <div><%= f.email_field :email, :placeholder => "Email", :class => "form-inline", autofocus: true %>        
+          <div id="dark-text"><%= f.email_field :email, :placeholder => "Email", :class => "form-inline", autofocus: true %>        
           </div><br>
 
-          <div><%= f.password_field :password, :placeholder => "Password", :class => "form-inline", autocomplete: "off" %> 
+          <div id="dark-text"><%= f.password_field :password, :placeholder => "Password", :class => "form-inline", autocomplete: "off" %> 
           </div><br>
 
-          <div>  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-inline", autocomplete: "off" %> 
+          <div id="dark-text">  <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "form-inline", autocomplete: "off" %> 
           </div><br>
 
           <div>
-            <button type="submit" class="btn btn-info"><strong>Sign Up for MusicApp</strong></button>
+            <button id="dark-text" type="submit" class="btn btn-info"><strong>Sign Up for MusicApp</strong></button>
           </div>
         <% end %>
       </div>  
