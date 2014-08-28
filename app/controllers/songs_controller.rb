@@ -40,7 +40,6 @@ class SongsController < ApplicationController
     @version = Version.new
     @master_version = @song.versions.find_by(:master => true)
     @member =  @song.team_members 
-    puts @member
   end
 
   def edit

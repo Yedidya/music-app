@@ -67,7 +67,6 @@ ul {
 #version_page {
   margin-left: 222px;
   background-color: transparent;
-  opacity: 0.8;
   border-radius: 6px;
   height: 290px;
   width: 700px;
@@ -87,6 +86,7 @@ p {
 p#version-message {
   font-size: 15px;
   font-style: italic;
+  color: black;
 }
 
 .btn-xs {
@@ -142,7 +142,7 @@ a.version-user:hover {
 }
 
 #player {
-  width: 800px;
+  width: 700px;
   margin: auto;
   position: relative;
   bottom: 17px;
@@ -162,4 +162,19 @@ a.version-user:hover {
 
 #dark-text {
   color: black;
+}
+
+ul#comments {
+  margin-left: 0px;
+}
+
+.new-comment {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; 
+  margin-right: 60px;
+}
+
+#version-buttons {
+  margin-left: 100px;
 }

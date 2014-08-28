@@ -59,24 +59,26 @@
                         </span>
                       </div> 
                     </span>
-                    <p id="version-message"><%= version.message %></p>
+                    <p id="version-message dark-text"><%= version.message%></p>
                   </h4>
                 </div>
               </a>
               <div id="collapse<%= index.to_s %>" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <p><%= version.message %></p>
+                  <p id="dark-text"><%= version.message %></p>
                     <audio controls>
                       <source src="<%= version.song_url.url %>" type="audio/mpeg">
                       Your browser does not support the audio tag.
-                    </audio> 
-                  <% if version.master %>
-                    <span>MASTER!</span>
-                  <% else %>
+                    </audio>
+                  <span id="version-buttons">
+                    <% if version.master %>
+                      <span id="dark-text">MASTER!</span>
+                    <% else %>
                     <%= link_to "Make Master", make_master_path(version.id), :class => "btn btn-default" %>
-                  <% end %>
-                  <a href="<%= version_download_path(version.id) %>" class="btn btn-warning btn-xs">Download</a>
-                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#comments-modal" ng-click="loadComments(<%= version.id %>, <%= current_user.id %>)">Comments</button>
+                    <% end %>
+                    <a href="<%= version_download_path(version.id) %>" id="dark-text" class="btn btn-warning btn-xs">Download</a>
+                    <button id="dark-text" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#comments-modal" ng-click="loadComments(<%= version.id %>, <%= current_user.id %>)">Comments</button>
+                  </span> 
                 </div>
               </div>
             </div>
@@ -90,12 +92,12 @@
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="dark-text">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Add a song member!</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" >
             
                 <%= form_tag('/team_members') do %>
               <div class="field">
@@ -122,7 +124,7 @@
 
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="dark-text">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Upload your contibution!</h4>
@@ -163,15 +165,15 @@
 
     <div class="modal fade" id="comments-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="dark-text">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">Comments</h4>
           </div>
           <div class="modal-body">
             <div class="comments-list">
-              <ul>
-                <li ng-repeat="comment in comments">{{ comment.text }}</li>
+              <ul id="comments">
+                <li ng-repeat="comment in comments">{{ comment.username }}: {{ comment.text }}</li>
               </ul>
             </div>
           </div>
