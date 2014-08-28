@@ -5,6 +5,10 @@ body {
   color: lavender;
 }
 
+input {
+  color: black;
+}
+
 .jumbotron, .panel-body {
   background-color: #fff;
   opacity: 0.8; 
@@ -176,5 +180,11 @@ ul#comments {
 }
 
 #version-buttons {
-  margin-left: 100px;
+  margin-left: 60px;
 }
+
+#comment-box {
+  width: 325px;
+}
+
+
