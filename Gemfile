@@ -6,6 +6,7 @@ gem 'rails', '4.1.1'
 gem 'mysql2'
 gem 'devise'
 gem 'seed_dump'
+gem 'fog'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -18,6 +19,7 @@ gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 gem 'bootstrap-sass'
 gem 'quiet_assets'
+gem 'dotenv-rails',        group: :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
