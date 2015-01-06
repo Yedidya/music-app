@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825145228) do
+ActiveRecord::Schema.define(version: 20150106221902) do
+
+  create_table "chunks", force: true do |t|
+    t.integer  "position"
+    t.integer  "length"
+    t.string   "tack_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -46,6 +54,12 @@ ActiveRecord::Schema.define(version: 20140825145228) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tracks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "song_id"
   end
 
   create_table "users", force: true do |t|
