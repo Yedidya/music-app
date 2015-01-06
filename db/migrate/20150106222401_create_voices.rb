@@ -3,7 +3,6 @@ class CreateVoices < ActiveRecord::Migration
     create_table :voices do |t|
       t.integer :sampling_rate
       t.string :url
-      t.blob :sample
 
       t.timestamps
     end
