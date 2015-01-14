@@ -1,11 +1,18 @@
-define(['HTTPTrackService', 'TrackService'], function(HTTPTrackService, TrackService){
+angular
+  .module('TrackServiceFactoryModule', ['HTTPTrackService', 'config'])
+  .service(['TrackServiceFactory'], ['HTTPTrackService', 'config', function(HTTPTrackService){
+
+  }]);
+
+
+define(['HTTPTrackService'], function(HTTPTrackService, TrackService){
   function TrackServiceFactory(config) {
     var serviceType = config.trackServiceType;
     if (serviceType === 'HTTP') {
       this.service = new HTTPTrackService(config.domain);
     } 
   }
-  TrackService.prototype.getTrackService = function() {
+  TrackServiceFactor.prototype.getTrackService = function() {
     return this.service;
   }
 });

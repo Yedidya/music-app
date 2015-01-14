@@ -1,6 +1,8 @@
-define(['$http', 'TrackService'], function($http, TrackService) {
-
-  function HTTPTrackService(domain) {
+angular
+  .module('HTTPTrackService', ['TrackService'])
+  .factory(['HTTPTrackService', ['TrackSefvice', function(TrackService){
+    define(['$http', 'TrackService'], function($http, TrackService) {
+    function HTTPTrackService(domain) {
       this.domain  = domain;
     }
 
@@ -45,4 +47,7 @@ define(['$http', 'TrackService'], function($http, TrackService) {
       return $http.delete(domain + '/track/' + trackId);
     }
   return HTTPTrackService;
-})
+}
+]);
+  
+

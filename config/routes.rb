@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get '/team_members/:song_id' => 'users#team_members'
       get '/versions/:id/comments' => 'comments#index'
       post '/versions/:id/comments' => 'comments#create'
+      get '/voices' => 'voices#index'
     end
   end
 

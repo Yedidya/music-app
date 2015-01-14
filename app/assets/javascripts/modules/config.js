@@ -1,6 +1,6 @@
-define(function(){
-  return {
-    trackServiceType: 'HTTP',
-    domain: 'http://songdub.com'
-  }
-});
+angular.module('configModule', [])
+    .constant('config', {
+      trackServiceType: 'HTTP'
+      domain: 'http://songdub.com'
+    });
+
