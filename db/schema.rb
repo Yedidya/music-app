@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114022604) do
+ActiveRecord::Schema.define(version: 20150122014046) do
 
   create_table "chunks", force: true do |t|
     t.integer  "position"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150114022604) do
     t.datetime "updated_at"
   end
 
-  create_table "chunks_voices", id: false, force: true do |t|
+  create_table "chunks_voices", force: true do |t|
     t.integer "chunk_id", null: false
     t.integer "voice_id", null: false
     t.text    "notes"
