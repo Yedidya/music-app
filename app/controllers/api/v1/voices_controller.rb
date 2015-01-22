@@ -18,8 +18,8 @@ class Api::V1::VoicesController < ApplicationController
       :voices => voices.as_json,
       :song_id => track.song_id,
       :updated_at => track.updated_at,
-      :created_at => track.created_at
-      #:chunk_voices => chunk_voices.as_json
+      :created_at => track.created_at,
+      :chunk_voices => chunk_voices
     ]
    respond_with(@results)
   end
