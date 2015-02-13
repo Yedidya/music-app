@@ -12,6 +12,7 @@ class Api::V1::VoicesController < ApplicationController
     chunks = Chunk.where(:track_id => params[:id])
     voices = Voice.find_by_sql ["SELECT `voices`.* FROM `tracks_voices` LEFT JOIN `voices` ON `voices`.`id` = `tracks_voices`.`voice_id` WHERE `tracks_voices`.`track_id` = ?", params[:id]]
     chunk_voices = ChunkVoice.find_by_sql ["SELECT `chunks_voices`.* FROM `chunks` JOIN `chunks_voices` ON `chunks`.`id` = `chunks_voices`.`chunk_id` WHERE `chunks`.`track_id` = ?", params[:id]]
+    
     results = {
       :id => track.id,
       :chunks => chunks,
@@ -21,9 +22,6 @@ class Api::V1::VoicesController < ApplicationController
       :created_at => track.created_at,
       :chunk_voices => chunk_voices
     }
-    puts YAML::dump(chunks)
-    puts YAML::dump(voices)
-    puts YAML::dump(chunk_voices)
     
    respond_with(results)
   end
