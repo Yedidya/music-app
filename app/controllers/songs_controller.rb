@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
     @members = @song.users
-    puts @members
+    #puts @members
     @versions = @song.versions
     @title = @song.title
     @version = Version.new
