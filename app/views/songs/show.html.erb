@@ -8,7 +8,7 @@
       <li ng-repeat="teamMember in teamMembers">
         <a href="/users/{{teamMember.id}}">{{ teamMember.username }}</a>
       </li>
-      <%if @members.include?(current_user) %>
+      <%if current_user.id == @song.user_id %>
         <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Add song member </button>
       <% end %>
     </ul>
@@ -22,7 +22,7 @@
           <button id="new-version-btn"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">Contribute to the track </button>
         <% end %>
         <div>
-          <%if @members.include?(current_user) %>
+          <%if current_user.id == @song.user_id %>
             <a href="/songs/<%=@song.id%>/edit" class="btn btn-default btn-xs">Edit details</a>         
           <% end %>
         </div>

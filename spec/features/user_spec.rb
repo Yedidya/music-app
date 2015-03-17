@@ -28,14 +28,17 @@ describe "the signup process", :type => :feature do
     click_button 'Sign Up'
   end
 
-  it "creates a new user" do
+  it "creates a new user and lead" do
     User.last.username == 'Anthony'
   end
 
   it "leads us to the users home page" do
     expect(page).to have_content('Anthony')
   end
+
+  
 end
+
 
 
 
